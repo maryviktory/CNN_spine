@@ -1,0 +1,65 @@
+---
+version: 1
+
+kind: group
+
+framework: pytorch
+
+tags: [examples]
+
+hptuning:
+  concurrency: 1
+
+  matrix:
+    dataset:
+      values: ['data_19subj']
+    use_pretrained:
+      values: ['True']
+    Feature_extractation:
+      values: ['False']
+    network:
+      values: ['resnet']
+    batch_size_train:
+      values: [128]
+
+build:
+  image: pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
+  build_steps:
+    - pip install -r requirements.txt
+
+environment:
+  resources:
+    cpu:
+      requests: 3
+      limits: 8
+    memory:
+      requests: 1024
+      limits: 4098
+    gpu:
+      requests: 1
+      limits: 1
+
+
+
+declarations:
+  Polyaxon_run: "True"
+  epochs: 30
+  lr: 0.00001
+  momentum: 0.9
+  log_interval: 100
+  info_experiment: "2_classes"
+
+run:
+  cmd: python -u run_diff_nets_group.py
+                         --flag_Polyaxon={{Polyaxon_run}}\
+                         --batch_size={{ batch_size_train }} \
+                         --epochs={{ epochs }} \
+                         --lr={{ lr }} \
+                         --momentum={{ momentum }}\
+                         --log-interval={{ log_interval }}\
+                         --dataset={{ dataset }}\
+                         --use_pretrained={{ use_pretrained }}\
+                         --Feature_extractation={{ Feature_extractation }}\
+                         --network={{ network }}\
+                         --info_experiment={{info_experiment}}
+

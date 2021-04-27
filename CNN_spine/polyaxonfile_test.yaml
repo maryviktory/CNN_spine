@@ -1,0 +1,32 @@
+---
+version: 1
+
+kind: experiment
+
+framework: pytorch
+
+tags: [examples]
+
+build:
+  image: pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
+  build_steps:
+    - pip install -r requirements.txt
+
+environment:
+  resources:
+    cpu:
+      requests: 3
+      limits: 3
+    memory:
+      requests: 1024
+      limits: 4098
+    gpu:
+      requests: 1
+
+declarations:
+  flag_Polyaxon: "True"
+
+
+run:
+  cmd: python -u test_CNNSpinousProcess_2_3_4classes.py
+                  --flag_Polyaxon={{flag_Polyaxon}}

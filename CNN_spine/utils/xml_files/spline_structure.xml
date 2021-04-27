@@ -1,0 +1,21 @@
+
+<property name="GlSpline">
+            <param name="visible">1</param>
+            <param name="alwaysVisible">0</param>
+            <param name="editable">1</param>
+            <param name="color">1 1 0 1 </param>
+            <param name="lineWidth">3</param>
+            <param name="labelVisible">1</param>
+            <param name="labelDepthTest">1</param>
+            <param name="labelColor">1 0 0 </param>
+            <param name="labelText">100.0 mm</param>
+            <param name="name">Spline dir 4</param>
+            <param name="points">1 1 1</param>
+            <param name="pointSize">5</param>
+            <param name="maxPoints">-1</param>
+            <param name="pointColor">1 1 0 1 </param>
+            <param name="labelPixelOffset">3.5465996582398 -74.811086540996 </param>
+            <param name="lengthAsLabel">1</param>
+            <param name="isClosed">0</param>
+            <param name="parentDataUid">data1</param>
+    </property>
